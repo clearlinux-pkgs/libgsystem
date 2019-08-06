@@ -4,7 +4,7 @@
 #
 Name     : libgsystem
 Version  : 2015.2
-Release  : 8
+Release  : 9
 URL      : http://pkgs.fedoraproject.org/repo/pkgs/libgsystem/libgsystem-2015.2.tar.xz/e388e3ad3c2b527479cc8512f6ad9a37/libgsystem-2015.2.tar.xz
 Source0  : http://pkgs.fedoraproject.org/repo/pkgs/libgsystem/libgsystem-2015.2.tar.xz/e388e3ad3c2b527479cc8512f6ad9a37/libgsystem-2015.2.tar.xz
 Summary  : https://live.gnome.org/Projects/libgsystem
@@ -18,6 +18,8 @@ BuildRequires : gtk-doc-dev
 BuildRequires : libcap-dev
 BuildRequires : libxslt-bin
 BuildRequires : pkgconfig(gio-unix-2.0)
+Patch1 : remove_xaatr_header_check.patch
+
 
 %description
 Pending deprecation
@@ -45,6 +47,7 @@ lib components for the libgsystem package.
 
 %prep
 %setup -q -n libgsystem-2015.2
+%patch1 -p1
 
 %build
 %autogen --disable-static --without-systemd-journal

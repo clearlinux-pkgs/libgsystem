@@ -1,0 +1,33 @@
+From b3b855f52a1ce92bbea4026887cfdc3ced1fef87 Mon Sep 17 00:00:00 2001
+From: santoshkumar <santoshkumar.laxminarayan.rai@intel.com>
+Date: Tue, 6 Aug 2019 10:09:50 +0800
+Subject: [PATCH] This projct is not using any attr/xattr.h file in source
+ code.
+
+In attr project latest version, maintainers have already removed
+attr/xattr.h file due to, its just replica of sys/xattr.h.
+
+Keeping check of attr/xattr.h with latst attr project version will lead
+to compilation failure.
+
+Signed-off-by: santoshkumar <santoshkumar.laxminarayan.rai@intel.com>
+---
+ configure.ac | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index d504c1f..b256d78 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,8 +29,6 @@ AC_SUBST(WARN_CFLAGS)
+ LT_PREREQ([2.2.4])
+ LT_INIT([disable-static])
+ 
+-AC_CHECK_HEADER([attr/xattr.h],,[AC_MSG_ERROR([You must have attr/xattr.h from libattr])])
+-
+ PKG_PROG_PKG_CONFIG
+ 
+ GIO_DEPENDENCY="gio-unix-2.0 >= 2.34.0"
+-- 
+2.22.0
+
